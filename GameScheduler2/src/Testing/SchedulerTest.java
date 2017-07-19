@@ -321,8 +321,8 @@ public class SchedulerTest {
 		
 		SchedulerService ss = new SchedulerService(gr, pr, dr);
 	
-		System.out.println("Testing generation player report success");
-		System.out.print(ss.playerWiseReport("Tom").toString());
+		//System.out.println("Testing generation player report success");
+		//System.out.print(ss.playerWiseReport("Tom").toString());
 		assertEquals("Games which Tom plays:\n"+"Rugby(  Monday    )  Tennis(  Monday    )  \n", ss.playerWiseReport("Tom").toString());
 		
 	}

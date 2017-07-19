@@ -31,47 +31,9 @@ public class SchedulerService implements ISchedulerService {
 			return "Number of players cannot be zero!";
 		}
 		if (!(game.getName().equals("repeat"))) {
-			Game[] games = gameRepo.getGames();
-			int gameSize = games.length;
-
-			if (games[--gameSize] != null) {
-
-				int newGameSize = games.length;
-				++newGameSize;
-				Game[] newGames = new Game[newGameSize];
-
-				for (int t = 0; t < games.length; t++) {
-					//
-					System.out.println(g.getName());
-					System.out.println("Sorting new array " + t);
-					newGames[t] = games[t];
-				}
-				//
-				newGames[--newGameSize] = g;
-				gameRepo.setGames(newGames);
-				for (Game gameTry : gameRepo.getGames()) {
-					System.out.println("Testing game presence");
-					System.out.println(gameTry.getName());
-				}
-
-				return "success";
-			} else {
-				System.out.println("Entered first if");
-				for (int i = 0; i < games.length; i++) {
-					if (games[i] != null) {
-						System.out.println("Hit games[i] not null " + i);
-						continue;
-					} else {
-						System.out.println("Hit games[i] null " + i);
-						//
-						games[i] = g;
-						return "success";
-					}
-				}
-			}
-			return "success";
+			return gameRepo.save(g);
 		} else {
-			System.out.println("never come here??");
+			//System.out.println("never come here??");
 			return "failure";
 		}
 
@@ -104,47 +66,9 @@ public class SchedulerService implements ISchedulerService {
 		}
 
 		if (!(p.getName().equals("repeat"))) {
-			Player[] players = playerRepo.getPlayers();
-			int playerSize = players.length;
-
-			if (players[--playerSize] != null) {
-
-				int newPlayerSize = players.length;
-				++newPlayerSize;
-				Player[] newPlayers = new Player[newPlayerSize];
-
-				for (int t = 0; t < players.length; t++) {
-					//
-					System.out.println(p.getName());
-					System.out.println("Sorting new array " + t);
-					newPlayers[t] = players[t];
-				}
-				//
-				newPlayers[--newPlayerSize] = p;
-				playerRepo.setPlayers(newPlayers);
-				for (Player playerTry : playerRepo.getPlayers()) {
-					System.out.println("Testing game presence");
-					System.out.println(playerTry.getName());
-				}
-
-				return "success";
-			} else {
-				System.out.println("Entered first if");
-				for (int i = 0; i < players.length; i++) {
-					if (players[i] != null) {
-						System.out.println("Hit games[i] not null " + i);
-						continue;
-					} else {
-						System.out.println("Hit games[i] null " + i);
-						//
-						players[i] = p;
-						return "success";
-					}
-				}
-			}
-			return "success";
+			return playerRepo.save(p);
 		} else {
-			System.out.println("never come here??");
+			//System.out.println("never come here??");
 			return "failure";
 		}
 	}
@@ -175,47 +99,9 @@ public class SchedulerService implements ISchedulerService {
 		}
 
 		if (!(d.getName().equals("repeat"))) {
-			Day[] days = dayRepo.getDays();
-			int daySize = days.length;
-
-			if (days[--daySize] != null) {
-
-				int newDaySize = days.length;
-				++newDaySize;
-				Day[] newDays = new Day[newDaySize];
-
-				for (int t = 0; t < days.length; t++) {
-					//
-					System.out.println(d.getName());
-					System.out.println("Sorting new array " + t);
-					newDays[t] = days[t];
-				}
-				//
-				newDays[--newDaySize] = d;
-				dayRepo.setDays(newDays);
-				for (Day dayTry : dayRepo.getDays()) {
-					System.out.println("Testing game presence");
-					System.out.println(dayTry.getName());
-				}
-
-				return "success";
-			} else {
-				System.out.println("Entered first if");
-				for (int i = 0; i < days.length; i++) {
-					if (days[i] != null) {
-						System.out.println("Hit games[i] not null " + i);
-						continue;
-					} else {
-						System.out.println("Hit games[i] null " + i);
-						//
-						days[i] = d;
-						return "success";
-					}
-				}
-			}
-			return "success";
+			return dayRepo.save(d);
 		} else {
-			System.out.println("never come here??");
+			//System.out.println("never come here??");
 			return "failure";
 		}
 	}
@@ -234,8 +120,8 @@ public class SchedulerService implements ISchedulerService {
 			Game[] testGames = testDays[t].getGames();
 
 			for (int a = 0; a < testGames.length; a++) {
-				System.out.println("presence games:");
-				System.out.println(testGames[a].getName() + "  " + gameName);
+				//System.out.println("presence games:");
+				//System.out.println(testGames[a].getName() + "  " + gameName);
 				if (testGames[a].getName().equals(gameName)) {
 					presenceOfGame = 1;
 				}

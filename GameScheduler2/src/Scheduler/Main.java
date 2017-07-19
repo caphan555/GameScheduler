@@ -36,7 +36,6 @@ public class Main {
 			String gameName = sc.nextLine();
 			//System.out.println("gameName: " + gameName);
 			StringBuffer gameWiseResult = ss.gameWiseReport(gameName);
-			System.out.print(gameWiseResult.toString());
 			
 			System.out.println("==========================================");
 			System.out.println("GAME WISE REPORT");
@@ -96,6 +95,12 @@ public class Main {
 		String gameResult4 = ss.createGame(game4);
 		String gameResult5 = ss.createGame(game5);
 		
+		/*System.out.println("Testing added games");
+		for(int i=0; i<ss.getGameRepo().getGames().length; i++) {
+			Game[] games = ss.getGameRepo().getGames();
+			System.out.println("game: "+games[i].getName());
+		}*/
+		
 		//Set Up Players
 		Game[] player1Games = {game1, game2};
 		Player player1 = new Player("Xiaoming", player1Games);
@@ -114,6 +119,12 @@ public class Main {
 		String playerResult4 = ss.createPlayer(player4);
 		String playerResult5 = ss.createPlayer(player5);
 		
+		/*Player[] players = ss.getPlayerRepo().getPlayers();
+		System.out.println("printing players");
+		for(int t=0; t<players.length; t++) {
+			System.out.println("Player: " +players[t].getName());
+		}*/
+		
 		//Set Up Days
 		Game[] day1Games = {game1, game2};
 		Day day1 = new Day("Day1", day1Games);
@@ -131,6 +142,12 @@ public class Main {
 		String dayResult3 = ss.createDay(day3);
 		String dayResult4 = ss.createDay(day4);
 		String dayResult5 = ss.createDay(day5);
+		
+		/*System.out.println("Check Days");
+		Day[] days = ss.getDayRepo().getDays();
+		for(int a=0; a<days.length; a++) {
+			System.out.println("Day: "+days[a].getName());
+		}*/
 		
 		
 	}

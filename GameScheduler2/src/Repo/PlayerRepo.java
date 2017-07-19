@@ -14,8 +14,47 @@ public class PlayerRepo implements IPlayerRepo {
 	}
 
 	public String save(Player p) {
-		return "";
+		Player[] players = this.getPlayers();
+		int playerSize = players.length;
+
+		if (players[--playerSize] != null) {
+
+			int newPlayerSize = players.length;
+			++newPlayerSize;
+			Player[] newPlayers = new Player[newPlayerSize];
+
+			for (int t = 0; t < players.length; t++) {
+				//
+				//System.out.println(p.getName());
+				//System.out.println("Sorting new array " + t);
+				newPlayers[t] = players[t];
+			}
+			//
+			newPlayers[--newPlayerSize] = p;
+			this.setPlayers(newPlayers);
+			/*for (Player playerTry : playerRepo.getPlayers()) {
+				System.out.println("Testing game presence");
+				System.out.println(playerTry.getName());
+			}*/
+
+			return "success";
+		} else {
+			//System.out.println("Entered first if");
+			for (int i = 0; i < players.length; i++) {
+				if (players[i] != null) {
+					//System.out.println("Hit games[i] not null " + i);
+					continue;
+				} else {
+					//System.out.println("Hit games[i] null " + i);
+					//
+					players[i] = p;
+					return "success";
+				}
+			}
+		}
+		return "success";
 	}
+	
 	public Player findOne(String name) {
 		for(int i=0; i<players.length; i++) {
 			if(players[i] != null) {
